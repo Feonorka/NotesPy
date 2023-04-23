@@ -197,78 +197,78 @@ getPrize(prizesList, "prizes.txt");
 // Этот пример получит первую игрушку из списка призовых игрушек, которой соответствует вероятность выпадения 50%.
 // Если игрушка успешно выбрана, ее количество уменьшится на 1, она удалится из списка призовых игрушек и будет записана в файл "prizes.txt".
 
-Scanner scanner = new Scanner(System.in);
-
-System.out.print("Введите id новой игрушки: ");
-int id = scanner.nextInt();
-
-System.out.print("Введите название новой игрушки: ");
-String name = scanner.next();
-
-System.out.print("Введите количество новой игрушки: ");
-int quantity = scanner.nextInt();
-
-System.out.print("Введите частоту выпадения новой игрушки (в % от 100): ");
-double frequency = scanner.nextDouble();
-
-Toy.addNewToy(toyList, id, name, quantity, frequency);
-
-System.out.print("Введите id игрушки, частоту которой нужно изменить: ");
-int idToChange = scanner.nextInt();
-
-System.out.print("Введите новую частоту (в % от 100): ");
-double newFrequency = scanner.nextDouble();
-
-Toy.changeToyFrequency(toyList, idToChange, newFrequency);
-
-// Для запуска розыгрыша и получения призовой игрушки можно предложить пользователю ввести команду в консоль, например "play".
-// При этом вызовется метод розыгрыша и, если игрушка выбрана успешно, она добавится в список призовых игрушек.
-// Затем пользователь может вызвать метод получения призовой игрушки и ввести имя файла, в который будет записана игрушка.
-// Пример интерфейса пользователя:
-
-while (true) {
-    System.out.println();
-    System.out.println("Выберите действие:");
-    System.out.println("1. Добавить новую игрушку и изменить ее вес");
-    System.out.println("2. Розыгрыш приза");
-    System.out.println("3. Получить приз");
-    System.out.println("4. Выйти");
-
-    String action = scanner.next();
-
-    if (action.equals("1")) {
-        System.out.print("Введите id новой игрушки: ");
-        
-        System.out.print("Введите название новой игрушки: ");
-        
-        System.out.print("Введите количество новой игрушки: ");
-        
-        System.out.print("Введите частоту выпадения новой игрушки (в % от 100): ");
-        
-        Toy.addNewToy(toyList, id, name, quantity, frequency);
-
-        System.out.print("Введите id игрушки, частоту которой нужно изменить: ");
-        
-        System.out.print("Введите новую частоту (в % от 100): ");
-        
-        Toy.changeToyFrequency(toyList, idToChange, newFrequency);
-
-    } else if (action.equals("2")) {
-        Toy.playAndAddToPrizes(toyList, prizesList);
-        System.out.println("Список призовых игрушек: " + prizesList);
-
-    } else if (action.equals("3")) {
-        System.out.print("Введите имя файла для записи приза: ");
-        String filename = scanner.next();
-        Toy.getPrize(prizesList, filename);
-
-    } else if (action.equals("4")) {
-        break;
+try (Scanner scanner = new Scanner(System.in)) {
+    System.out.print("Введите id новой игрушки: ");
+    int id = scanner.nextInt();
+    
+    System.out.print("Введите название новой игрушки: ");
+    String name = scanner.next();
+    
+    System.out.print("Введите количество новой игрушки: ");
+    int quantity = scanner.nextInt();
+    
+    System.out.print("Введите частоту выпадения новой игрушки (в % от 100): ");
+    double frequency = scanner.nextDouble();
+    
+    Toy.addNewToy(toyList, id, name, quantity, frequency);
+    
+    System.out.print("Введите id игрушки, частоту которой нужно изменить: ");
+    int idToChange = scanner.nextInt();
+    
+    System.out.print("Введите новую частоту (в % от 100): ");
+    double newFrequency = scanner.nextDouble();
+    
+    Toy.changeToyFrequency(toyList, idToChange, newFrequency);
+    
+    // Для запуска розыгрыша и получения призовой игрушки можно предложить пользователю ввести команду в консоль, например "play".
+    // При этом вызовется метод розыгрыша и, если игрушка выбрана успешно, она добавится в список призовых игрушек.
+    // Затем пользователь может вызвать метод получения призовой игрушки и ввести имя файла, в который будет записана игрушка.
+    // Пример интерфейса пользователя:
+    
+    while (true) {
+        System.out.println();
+        System.out.println("Выберите действие:");
+        System.out.println("1. Добавить новую игрушку и изменить ее вес");
+        System.out.println("2. Розыгрыш приза");
+        System.out.println("3. Получить приз");
+        System.out.println("4. Выйти");
+    
+        String action = scanner.next();
+    
+        if (action.equals("1")) {
+            System.out.print("Введите id новой игрушки: ");
+            
+            System.out.print("Введите название новой игрушки: ");
+            
+            System.out.print("Введите количество новой игрушки: ");
+            
+            System.out.print("Введите частоту выпадения новой игрушки (в % от 100): ");
+            
+            Toy.addNewToy(toyList, id, name, quantity, frequency);
+    
+            System.out.print("Введите id игрушки, частоту которой нужно изменить: ");
+            
+            System.out.print("Введите новую частоту (в % от 100): ");
+            
+            Toy.changeToyFrequency(toyList, idToChange, newFrequency);
+    
+        } else if (action.equals("2")) {
+            Toy.playAndAddToPrizes(toyList, prizesList);
+            System.out.println("Список призовых игрушек: " + prizesList);
+    
+        } else if (action.equals("3")) {
+            System.out.print("Введите имя файла для записи приза: ");
+            String filename = scanner.next();
+            Toy.getPrize(prizesList, filename);
+    
+        } else if (action.equals("4")) {
+            break;
+        }
     }
+    // В этом примере пользователь может выбрать действие (добавление новой игрушки, розыгрыш приза, получение приза или выход из программы) и
+    // следовать инструкциям ввода в консоль. При получении приза пользователь должен ввести имя файла, в который будет записана игрушка.
+    // Если пользователь выбрал розыгрыш приза, он может посмотреть список призовых игрушек в конце каждого розыгрыша.
 }
-// В этом примере пользователь может выбрать действие (добавление новой игрушки, розыгрыш приза, получение приза или выход из программы) и
-// следовать инструкциям ввода в консоль. При получении приза пользователь должен ввести имя файла, в который будет записана игрушка.
-// Если пользователь выбрал розыгрыш приза, он может посмотреть список призовых игрушек в конце каждого розыгрыша.
 
 
 
